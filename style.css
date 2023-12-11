@@ -93,11 +93,17 @@ nav{
         background: #f44336;
         transition: 1s;
     }
-
-    nav .fa{
+    .nav_bar-btn{
         display: none;
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
     }
+    .fa-window-close{
+        display: none;
 
+    }  
+ 
     /* footer section */
 
     .footer{
@@ -167,11 +173,7 @@ h3{
     box-shadow: 0 0 20px 0px rgb(213, 153, 153);
 
 }
-@media(max-width: 700px){
-    .row{
-        flex-direction: column;
-    }
-}
+
 
     
 /* media section */
@@ -183,29 +185,53 @@ h3{
         .nav-links ul li{
             display: block;
         }
-        .nav-links{
-            position:absolute;
+        nav .nav-links{
             background: #f44336;
+            position:absolute;
             height: 100vh;
             width:200px;
             top: 0;
-            right: -200;
-            text-align: left;
-            z-index: 2; /*The z-index property specifies the stack order of an element.
-           An element with greater stack order is always in front of an element with a lower stack order.*/
-           transition: 1s;
+            right: 0;
+            z-index: 9999;
+            transition: all 1s linear;
+            transform: translateX(100%);
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .nav_bar-btn{
+            display: block;
+            z-index: 9999;
+            text-align: end;
 
         }
-        nav .fa{ /*java script code for icons*/
-            display:block;
+        .active .nav-links{
+            transform: translateX(0);
+            pointer-events: auto;
+            opacity: 1;
+            visibility: visible;
+        }
+        .active .fa-bars{
+            display: none;
+        }
+        .active .fa-window-close{
+            display: block;
+            margin-right: 120px;
+            
+        }
+        .fa{ /*java script code for icons*/
+            width: 6rem;
+            height: 6rem;
             color:#fff;
-            margin: 10px;
-            font-size: 22px;
             cursor: pointer;
+            font-size: 2rem;
 
         }
         .nav-links ul li{
             padding: 15px;
-        }      
+        } 
+        .row{
+            flex-direction: column;
+        }     
       
 }
